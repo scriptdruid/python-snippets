@@ -1,0 +1,4 @@
+PyMySQL==0.9.3
+pandas==0.25.0
+paramiko==2.7.1
+sshtunnel==0.1.5
