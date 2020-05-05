@@ -7,8 +7,8 @@ from paramiko import SSHClient
 from sshtunnel import SSHTunnelForwarder
 from os.path import expanduser
 
-home = expanduser('~')
-pkeyfilepath = '/home/vipul/.ssh/id_rsa'
+home = expanduser("~")
+pkeyfilepath = "/home/vipul/.ssh/id_rsa"
 mypkey = paramiko.RSAKey.from_private_key_file(pkeyfilepath)
 
 
@@ -23,14 +23,19 @@ ssh_port = 22
 sql_ip = ""
 
 with SSHTunnelForwarder(
-        (ssh_host, ssh_port),
-        ssh_username=ssh_user,
-        ssh_pkey=mypkey,
-        remote_bind_address=(sql_hostname, sql_port)) as tunnel:
-    conn = pymysql.connect(host='127.0.0.1', user=sql_username,
-                           passwd=sql_password, db=sql_main_database,
-                           port=tunnel.local_bind_port)
-    query = '''SELECT VERSION();'''
+    (ssh_host, ssh_port),
+    ssh_username=ssh_user,
+    ssh_pkey=mypkey,
+    remote_bind_address=(sql_hostname, sql_port),
+) as tunnel:
+    conn = pymysql.connect(
+        host="127.0.0.1",
+        user=sql_username,
+        passwd=sql_password,
+        db=sql_main_database,
+        port=tunnel.local_bind_port,
+    )
+    query = """SELECT VERSION();"""
 
     data = pd.read_sql_query(query, conn)
     print(data)
