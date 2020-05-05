@@ -1,3 +1,3 @@
-## Difference between a function and a method 
+# Difference between a function and a method
 
-### A function is **independent** , whereas a method is part of class.
+## A function is **independent** , whereas a method is part of class
