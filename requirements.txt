@@ -2,6 +2,6 @@ pytz==2019.2
 paramiko==3.4.0
 pandas==0.25.0
 selenium==3.14.0
-PyMySQL==0.9.3
+PyMySQL==1.1.1
 sshtunnel==0.1.5
 beautifulsoup4==4.8.2
